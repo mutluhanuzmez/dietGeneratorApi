@@ -12,7 +12,7 @@ router.get('/specific', (req, res) => {
 })
 
 router.post('/saveMeal', (req,res) => {
-    console.log(req.body)
+    console.log(req.body.meal)
     const meal = new Meal({
         name: req.body.meal.name,
         totalCalorie: req.body.meal.totalCalorie,
@@ -33,5 +33,19 @@ router.post('/saveMeal', (req,res) => {
         res.json({ message: err })
     })
 })
+
+router.get('/findByMeal', (req,res) => {
+    Meal.find({name:req.body.meal.name})
+  .then((doc)=>{
+     console.log(req.body.name)
+     console.log(doc);
+     res.send(doc);
+  })
+ .catch((err)=>{
+     console.log(err);
+ });
+ })
+
+
 
 module.exports = router;

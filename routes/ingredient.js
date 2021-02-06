@@ -4,6 +4,7 @@ const Ingredient = require('../models/Ingredient');
 
 router.get('/', (req, res) => {
     res.send('We are on posts');
+    console.log("data data data")
 })
 
 router.get('/specific', (req, res) => {
@@ -22,6 +23,23 @@ router.get('/getAllIngredients', (req,res) => {
         res.send(ingredientsMap);  
       });
 })
+
+router.get('/findByMeal', (req,res) => {
+    Ingredient.find({name:req.body.name})
+  .then((doc)=>{
+     console.log(req.body.name)
+     console.log(doc);
+     res.send(doc[0].name);
+  })
+ .catch((err)=>{
+     console.log(err);
+ });
+ })
+
+
+
+
+
 
 
 
