@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Meal = require('../models/Meal');
-const Ingredient = require('../models/Ingredient');
 
 router.get('/', (req, res) => {
     res.send('We are on posts');

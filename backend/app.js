@@ -10,22 +10,16 @@ app.use(bodyParser.json());
 //Import Routes
 const mealRoute = require('./routes/meal');
 const ingredientRoute = require('./routes/ingredient');
+const authenticationRoute = require('./routes/auth');
 
 app.use('/ingredient', ingredientRoute);
 app.use('/meal', mealRoute);
-
-//Middlewares
-// app.use('/posts', () => {
-//     console.log('This is middleware running');
-// })
-
+app.use('/auth', authenticationRoute);
 
 //ROUTES
 app.get('/', (req, res) => {
     res.send('We are on home');
 })
-
-
 
 //Connect To DB
 
