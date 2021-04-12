@@ -9,31 +9,57 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import React,{ useState , useEffect} from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
- function LoginForm() {
+
+ function RegisterForm() {
    const [email,setEmail] = useState('')
    const [password,setPassword] = useState('')
+   const [name,setName] = useState('')
+   const [phone,setPhone] = useState('')
  
-   const submitHandler = (e) => {   
+   const RegisterHandler = (e) => {   
 
       e.preventDefault();
       console.log("calisiyorum");
-      axios.post(`http://localhost:8000/auth/login`, 
-      {'email':email,'password': password,},)
+      axios.post(`http://localhost:8000/auth/register`, 
+      {'email':email,'password': password,'name': name, 'phone':phone},)
       .then(res => {
         console.log(res);
         console.log(res.data);
       })
       console.log(email,password);
        
+      
+     
+      
+
+     
     }
 
 
     return(
 
-       <div style={{width:"40%", marginLeft:"Auto",marginRight:"Auto"}}>  
-        <h3 style={{textAlign:"Center"}}> Login </h3>  
-                <Form onSubmit={submitHandler} style={{width:"100%", marginLeft:"Auto",marginRight:"Auto",}}>
+       <div style={{width:"30%", marginLeft:"Auto",marginRight:"Auto",backgroundColor:""}}>  
+        <h3 style={{textAlign:"Center"}}> Register</h3>  
+                <Form onSubmit={RegisterHandler} style={{width:"100%", marginLeft:"Auto",marginRight:"Auto",}}> 
+
+                <Form.Group controlId="name">
+                <Form.Label>Name</Form.Label>
+                <Form.Control 
+                type="name" 
+                placeholder="Name" 
+                value={name}
+                onChange={(e) => setName(e.target.value)} 
+                />  </Form.Group>
+                <Form.Group controlId="phone">
+                <Form.Label>Phone</Form.Label>
+                <Form.Control 
+                type="phone" 
+                placeholder="Phone Number" 
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)} 
+                />
+                </Form.Group>
+                
                 <Form.Group controlId="email">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control 
@@ -41,13 +67,12 @@ import { Link } from 'react-router-dom'
                 placeholder="Enter email" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)} 
-                
-                
                 />
                 <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
                 </Form.Text>
                 </Form.Group>
+            
                 <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password"
@@ -56,12 +81,8 @@ import { Link } from 'react-router-dom'
                 </Form.Group>
                 
                 <Button variant="primary" type="submit">
-                Login
+                 Register
                 </Button>
-              
-                <Link to={'/register'} >   <Button variant="primary" style={{marginLeft:"15px"}}> Register  </Button>  </Link>
-               
-                
                 </Form> 
 
                 <p> send post request , 
@@ -73,4 +94,4 @@ import { Link } from 'react-router-dom'
     );
   }
 
-export default LoginForm;
+export default RegisterForm;

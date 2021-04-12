@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
+var cors = require('cors')
 
 require('dotenv/config');
-
+app.use(cors())
 app.use(bodyParser.json());
 
 //Import Routes
@@ -37,4 +38,4 @@ db.once("open", function() {
 });
 
 //How to we start listening to the server
-app.listen(3000);
+app.listen(8000);

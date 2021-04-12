@@ -26,6 +26,9 @@ import Col from 'react-bootstrap/Col'
       <Nav.Link eventKey={2} href="/login">
         Login
       </Nav.Link>
+      <Nav.Link eventKey={2} href="/Register">
+        Register
+      </Nav.Link>
     </Nav>
   </Navbar.Collapse>
 </Navbar>
