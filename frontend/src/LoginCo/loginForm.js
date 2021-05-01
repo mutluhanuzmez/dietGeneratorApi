@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom'
       e.preventDefault();
       console.log("calisiyorum");
       axios.post(`http://localhost:8000/auth/login`, 
-      {'email':email,'password': password,},)
+      {'username':email,'password': password,},)
       .then(res => {
         console.log(res);
         console.log(res.data);

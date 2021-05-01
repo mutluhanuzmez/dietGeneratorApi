@@ -20,6 +20,7 @@ const register = (req, res, next) => {
             phone: req.body.phone,
             password: hashedPass
         }) 
+        console.log('test')
         user.save()
             .then(data => {
                 console.log("ne oldu gardas");
@@ -33,6 +34,7 @@ const register = (req, res, next) => {
 }
 
 const login = (req, res, next) => {
+    console.log(req.body)
     var username = req.body.username
     var password = req.body.password
 
