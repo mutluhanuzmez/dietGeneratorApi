@@ -1,11 +1,4 @@
-
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import React,{ useState , useEffect} from 'react'
 import axios from 'axios'
