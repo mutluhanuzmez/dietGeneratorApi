@@ -1,13 +1,15 @@
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import React,{ useState , useEffect} from 'react'
+import React,{ useState } from 'react'
 import axios from 'axios'
+import { useTranslation } from 'react-i18next';
 
  function RegisterForm() {
    const [email,setEmail] = useState('')
    const [password,setPassword] = useState('')
    const [name,setName] = useState('')
    const [phone,setPhone] = useState('')
+   const { t } = useTranslation();
  
    const RegisterHandler = (e) => {   
 
@@ -32,55 +34,51 @@ import axios from 'axios'
     return(
 
        <div style={{width:"30%", marginLeft:"Auto",marginRight:"Auto",backgroundColor:""}}>  
-        <h3 style={{textAlign:"Center"}}> Register</h3>  
+        <h3 style={{textAlign:"Center"}}> {t('REGISTER')}</h3>  
                 <Form onSubmit={RegisterHandler} style={{width:"100%", marginLeft:"Auto",marginRight:"Auto",}}> 
 
                 <Form.Group controlId="name">
-                <Form.Label>Name</Form.Label>
+                <Form.Label>{t('NAME')}</Form.Label>
                 <Form.Control 
                 type="name" 
-                placeholder="Name" 
+                placeholder={t('NAME')}
                 value={name}
                 onChange={(e) => setName(e.target.value)} 
                 />  </Form.Group>
                 <Form.Group controlId="phone">
-                <Form.Label>Phone</Form.Label>
+                <Form.Label>{t('PHONE')}</Form.Label>
                 <Form.Control 
                 type="phone" 
-                placeholder="Phone Number" 
+                placeholder={t('PHONE_NUMBER')} 
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)} 
                 />
                 </Form.Group>
                 
                 <Form.Group controlId="email">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label>{t('EMAIL_ADRESS')}</Form.Label>
                 <Form.Control 
                 type="email" 
-                placeholder="Enter email" 
+                placeholder={t('ENTER_EMAIL')} 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)} 
                 />
                 <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
+                {t('WE_WILL_NEVER_SHARE_YOUR_EMAIL')}
                 </Form.Text>
                 </Form.Group>
             
                 <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password"
+                <Form.Label>{t('PASSWORD')}</Form.Label>
+                <Form.Control type="password" placeholder={t('PASSWORD')}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} />
                 </Form.Group>
                 
                 <Button variant="primary" type="submit">
-                 Register
+                {t('REGISTER')}
                 </Button>
                 </Form> 
-
-                <p> send post request , 
-                    if it is succesfull , redirect to  home page , save access token
-                </p>
          
        </div>
        

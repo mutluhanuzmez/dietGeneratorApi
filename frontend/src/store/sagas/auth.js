@@ -1,4 +1,4 @@
-import { put, call, select, delay } from "redux-saga/effects";
+import { put, call, delay } from "redux-saga/effects";
 import axios from "axios";
 import { URL, to } from "../../shared/utility";
 

@@ -1,6 +1,6 @@
 import Row from 'react-bootstrap/Row'
 
-function Entrance() {
+function UserHome() {
 
   return (
     <div>
@@ -10,4 +10,4 @@ function Entrance() {
   );
 }
 
-export default Entrance;
+export default UserHome;

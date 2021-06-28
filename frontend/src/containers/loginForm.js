@@ -1,70 +1,67 @@
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import React,{ useState , useEffect} from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next';
 
- function LoginForm() {
-   const [email,setEmail] = useState('')
-   const [password,setPassword] = useState('')
- 
-   const submitHandler = (e) => {   
 
-      e.preventDefault();
-      console.log("calisiyorum");
-      axios.post(`http://localhost:8000/auth/login`, 
-      {'username':email,'password': password,},)
+
+function LoginForm() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const { t } = useTranslation();
+
+  const submitHandler = (e) => {
+
+    e.preventDefault();
+    console.log("calisiyorum");
+    axios.post(`http://localhost:8000/auth/login`,
+      { 'username': email, 'password': password, })
       .then(res => {
         console.log(res);
         console.log(res.data);
       })
-      console.log(email,password);
-       
-    }
+    console.log(email, password);
 
-
-    return(
-
-       <div style={{width:"40%", marginLeft:"Auto",marginRight:"Auto"}}>  
-        <h3 style={{textAlign:"Center"}}> Login </h3>  
-                <Form onSubmit={submitHandler} style={{width:"100%", marginLeft:"Auto",marginRight:"Auto",}}>
-                <Form.Group controlId="email">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control 
-                type="email" 
-                placeholder="Enter email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)} 
-                
-                
-                />
-                <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-                </Form.Text>
-                </Form.Group>
-                <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)} />
-                </Form.Group>
-                
-                <Button variant="primary" type="submit">
-                Login
-                </Button>
-              
-                <Link to={'/register'} >   <Button variant="primary" style={{marginLeft:"15px"}}> Register  </Button>  </Link>
-               
-                
-                </Form> 
-
-                <p> send post request , 
-                    if it is succesfull , redirect to  home page , save access token
-                </p>
-         
-       </div>
-       
-    );
   }
+
+
+  return (
+
+    <div style={{ width: "40%", marginLeft: "Auto", marginRight: "Auto" }}>
+      <h3 style={{ textAlign: "Center" }}> {t('LOGIN')} </h3>
+      <Form onSubmit={submitHandler} style={{ width: "100%", marginLeft: "Auto", marginRight: "Auto", }}>
+        <Form.Group controlId="email">
+          <Form.Label>{t('EMAIL_ADRESS')}</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder={t('ENTER_EMAIL')}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+
+
+          />
+          <Form.Text className="text-muted">
+            {t('WE_WILL_NEVER_SHARE_YOUR_EMAIL')}.
+          </Form.Text>
+        </Form.Group>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>{t('PASSWORD')}</Form.Label>
+          <Form.Control type="password" placeholder={t('PASSWORD')}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)} />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          {t('LOGIN')}
+        </Button>
+
+        <Link to={'/register'} >   <Button variant="primary" style={{ marginLeft: "15px" }}> {t('REGISTER')} </Button>  </Link>
+      </Form>
+    </div>
+
+  );
+}
 
 export default LoginForm;

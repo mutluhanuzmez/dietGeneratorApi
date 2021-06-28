@@ -1,13 +1,10 @@
+import { useTranslation } from 'react-i18next';
+ 
  function Jumbo() {
-  
-  
+   const { t } = useTranslation();
     return(
-  
        <div>  
-       <h1 style={{textAlign:"Center"}}> Hello Fitters </h1>  
-
-     
-         
+         <h1 style={{textAlign:"Center"}}> {t('SLOGAN_1')}</h1>   
        </div>
        
     );
