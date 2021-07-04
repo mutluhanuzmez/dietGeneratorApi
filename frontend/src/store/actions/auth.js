@@ -25,12 +25,14 @@ export const authFinish = error => {
     };
 };
 
-export const auth = (email, password, navigateTo) => {
+export const auth = (payload) => {
     return {
-        type: actionTypes.AUTH_USER,
-        email: email,
-        password: password,
-        navigateTo: navigateTo
+        payload: {
+            type: actionTypes.AUTH_USER,
+            email: payload.email,
+            password: payload.password,
+            navigateTo: payload.navigateTo
+        }
     };
 };
 

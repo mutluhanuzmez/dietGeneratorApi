@@ -1,8 +1,10 @@
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import React,{ useState } from 'react'
-import axios from 'axios'
+import { useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next';
+
+import { REGISTER_USER } from '../store/actions/actionTypes';
 
  function RegisterForm() {
    const [email,setEmail] = useState('')
@@ -10,24 +12,23 @@ import { useTranslation } from 'react-i18next';
    const [name,setName] = useState('')
    const [phone,setPhone] = useState('')
    const { t } = useTranslation();
+
+   const dispatch = useDispatch();
  
    const RegisterHandler = (e) => {   
-
       e.preventDefault();
       console.log("calisiyorum");
-      axios.post(`http://localhost:8000/auth/register`, 
-      {'email':email,'password': password,'name': name, 'phone':phone},)
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
+      dispatch({type: REGISTER_USER, payload: {
+        email:email,password: password,name: name, phone:phone
+      }})
+      // axios.post(`http://localhost:8000/auth/register`, 
+      // {'email':email,'password': password,'name': name, 'phone':phone},)
+      // .then(res => {
+      //   console.log(res);
+      //   console.log(res.data);
+      // })
       console.log(email,password);
        
-      
-     
-      
-
-     
     }
 
 

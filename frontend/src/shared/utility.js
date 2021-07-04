@@ -10,13 +10,13 @@ export const to = (promise) => {//global function that will help use handle prom
 
     return promise
         .then(data => {
+            console.log("data",data)
             return [null, data.data];
         }).catch(err => {
-            console.log(err);
-            if(err.response){
-                return [err.response.data.error];
+            console.log("error",err.response);
+            if(err){
+                return [err.response];
             }else{
-                console.log("here");
                 return [CONNECTION_ERROR];
             }
         });
@@ -30,4 +30,4 @@ export const config = (token) => {
     }
 }
 
-export const URL = 'requestURL';
+export const URL = 'http://localhost:8000/';

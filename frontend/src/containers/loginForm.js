@@ -4,25 +4,22 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux'
 
+import { AUTH_USER } from '../store/actions/actionTypes';
 
 
 function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const submitHandler = (e) => {
-
     e.preventDefault();
-    console.log("calisiyorum");
-    axios.post(`http://localhost:8000/auth/login`,
-      { 'username': email, 'password': password, })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-    console.log(email, password);
+    dispatch({type: AUTH_USER, payload: {
+      email:email,password: password
+    }})
 
   }
 

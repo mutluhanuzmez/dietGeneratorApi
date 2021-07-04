@@ -24,11 +24,15 @@ const register = (req, res, next) => {
         user.save()
             .then(data => {
                 console.log("ne oldu gardas");
-                res.json({ message: 'user added succesfully!' });
+                res.json({ 
+                    data: {
+                        message: 'User added succesfully!' 
+                    }
+                });
             }) 
-         
             .catch(err => {
-                res.json({ message: err })
+                res.status(400);
+                res.send(err)
             })
     })
 }
@@ -43,24 +47,28 @@ const login = (req, res, next) => {
         if(user){
             bcrypt.compare(password, user.password, function(err, result) {
                 if (err) {
-                    res.json({ message: err })
+                    res.status(400).send({
+                        message: err
+                     })
                 }
                 if (result) {
                     let token = jwt.sign({name:user.username}, 'verySecretValue', {expiresIn: '1h'})
                     res.json({
-                        message: 'Login Successful!',
-                        token
+                        data: {
+                            message: 'Login Successful!',
+                            token
+                        }
                     })
                 }else{
-                    res.json({
+                    res.status(400).send({
                         message: 'Password does not matched!'
-                    })
+                     })
                 }
             })
         }else{
-            res.json({
+            res.status(400).send({
                 message: 'No user found!'
-            })
+             })
         }
     })
 }
