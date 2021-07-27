@@ -6,29 +6,34 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = () => {
+export const authSuccess = payload => {
     return {
         type: actionTypes.AUTH_SUCCESS,
+        payload: {
+            data: payload.data
+        }
     };
 };
 
-export const authFail = error => {
+export const authFail = payload => {
     return {
         type: actionTypes.AUTH_FAIL,
-        error: error
+        payload: {
+            error: payload.error
+        }
     };
 };
 
-export const authFinish = error => {
+export const authFinish = () => {
     return {
         type: actionTypes.AUTH_FINISH,
     };
 };
 
-export const auth = (payload) => {
+export const auth = payload => {
     return {
+        type: actionTypes.AUTH_USER,
         payload: {
-            type: actionTypes.AUTH_USER,
             email: payload.email,
             password: payload.password,
             navigateTo: payload.navigateTo
@@ -36,17 +41,22 @@ export const auth = (payload) => {
     };
 };
 
-export const setEmail = (email) => {
+export const setEmail = payload => {
     return {
         type: actionTypes.SET_EMAIL,
-        email: email,
+        payload: {
+            email: payload.email
+        }
+
     };
 };
 
-export const setPassword = (password) => {
+export const setPassword = payload => {
     return {
         type: actionTypes.SET_PASSWORD,
-        password: password,
+        payload: {
+            password: payload.password
+        }
     };
 };
 
@@ -59,5 +69,11 @@ export const showPassword = () => {
 export const authErrorClean = () => {
     return {
         type: actionTypes.AUTH_ERROR_CLEAN,
+    };
+};
+
+export const authLogOut = () => {
+    return {
+        type: actionTypes.AUTH_LOG_OUT,
     };
 };

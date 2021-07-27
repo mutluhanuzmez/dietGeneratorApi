@@ -5,6 +5,7 @@ export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAIL= 'AUTH_FAIL';
 export const AUTH_FINISH= 'AUTH_FINISH';
 export const AUTH_ERROR_CLEAN= 'AUTH_ERROR_CLEAN';
+export const AUTH_LOG_OUT = 'AUTH_LOG_OUT'
 export const SET_EMAIL = "SET_EMAIL";
 export const SET_PASSWORD = "SET_PASSWORD";
 export const SHOW_PASSWORD = "SHOW_PASSWORD";

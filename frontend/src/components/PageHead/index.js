@@ -5,9 +5,18 @@ import enFlag from '../../assets/languageFlags/EN.png'
 import trFlag from '../../assets/languageFlags/TR.png'
 import { useTranslation } from 'react-i18next';
 import './style.css';
-function PageHead() {
+
+import { connect } from "react-redux";
+
+//import * as actions from "../../store/actions";
+
+const PageHead = props => {
     const { t } = useTranslation();
     const { i18n } = useTranslation();
+
+    const { isAuthUser, actions } = props;
+
+    console.log('actions', isAuthUser, actions);
 
     function changeLanguage(lan) {
         i18n.changeLanguage(lan);
@@ -46,4 +55,14 @@ function PageHead() {
     );
 }
 
-export default PageHead;
+const mapStateToProps = (state) => ({
+    isAuthUser: state.auth.isAuthUser
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    logout: () =>
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+    PageHead
+);

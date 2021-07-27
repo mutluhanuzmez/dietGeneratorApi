@@ -17,18 +17,9 @@ import { REGISTER_USER } from '../store/actions/actionTypes';
  
    const RegisterHandler = (e) => {   
       e.preventDefault();
-      console.log("calisiyorum");
       dispatch({type: REGISTER_USER, payload: {
         email:email,password: password,name: name, phone:phone
       }})
-      // axios.post(`http://localhost:8000/auth/register`, 
-      // {'email':email,'password': password,'name': name, 'phone':phone},)
-      // .then(res => {
-      //   console.log(res);
-      //   console.log(res.data);
-      // })
-      console.log(email,password);
-       
     }
 
 

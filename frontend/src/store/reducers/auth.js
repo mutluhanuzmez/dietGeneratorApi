@@ -3,6 +3,7 @@ import { updateObject } from '../../shared/utility';
 
 const initialState = {
     //initial states
+    isAuthUser: !!localStorage.getItem("user"),
     email: '',
     password: '',
     isLoggedIn : false,
@@ -32,6 +33,7 @@ const showPassword = ( state ) => {
 
 const authSuccess = (state, action) => {
     return updateObject( state, {
+        isAuthUser: true,
         isLoggedIn : true,
         error: null,
         loading: false,

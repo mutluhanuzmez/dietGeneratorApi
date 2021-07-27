@@ -8,7 +8,8 @@ export {
     setPassword,
     showPassword,
     authFinish,
-    authErrorClean
+    authErrorClean,
+    authLogOut
 } from './auth';
 
 export {

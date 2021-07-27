@@ -12,14 +12,16 @@ export const registerSuccess = () => {
     };
 };
 
-export const registerFail = error => {
+export const registerFail = payload => {
     return {
         type: actionTypes.REGISTER_FAIL,
-        error: error
+        payload: {
+            error : payload.error
+        }
     };
 };
 
-export const registerFinish = error => {
+export const registerFinish = payload => {
     return {
         type: actionTypes.REGISTER_FINISH,
     };
@@ -38,31 +40,39 @@ export const register = (payload) => {
     };
 };
 
-export const registerSetName = (name) => {
+export const registerSetName = payload => {
     return {
         type: actionTypes.REGISTER_SET_NAME,
-        name: name,
+        payload: {
+            name: payload.name
+        }
     };
 };
 
-export const registerSetPhone = (phone) => {
+export const registerSetPhone = payload => {
     return {
         type: actionTypes.REGISTER_SET_PHONE,
-        phone: phone,
+        payload: {
+            phone: payload.phone,
+        }
     };
 };
 
-export const registerSetEmail = (email) => {
+export const registerSetEmail = payload => {
     return {
         type: actionTypes.REGISTER_SET_EMAIL,
-        email: email,
+        payload: {
+            email: payload.email,
+        }
     };
 };
 
-export const registerSetPassword = (password) => {
+export const registerSetPassword = payload => {
     return {
         type: actionTypes.REGISTER_SET_PASSWORD,
-        password: password,
+        payload: {
+            password: payload.password,
+        }
     };
 };
 
