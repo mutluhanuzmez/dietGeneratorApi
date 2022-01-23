@@ -25,7 +25,7 @@ function LoginForm() {
 
   return (
 
-    <div style={{ width: "40%", marginLeft: "Auto", marginRight: "Auto" }}>
+    <div style={{ width: "30%", marginLeft: "Auto", marginRight: "Auto" }}>
       <h3 style={{ textAlign: "Center" }}> {t('LOGIN')} </h3>
       <Form onSubmit={submitHandler} style={{ width: "100%", marginLeft: "Auto", marginRight: "Auto", }}>
         <Form.Group controlId="email">

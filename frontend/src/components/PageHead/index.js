@@ -24,7 +24,7 @@ const PageHead = props => {
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" >
-                <Navbar.Brand href="/">yemekplancısı</Navbar.Brand>
+                <Navbar.Brand href="/">YemekOps</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
@@ -60,7 +60,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    logout: () =>
+    logout: () => dispatch({type: 'AUTH_LOG_OUT'})
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(
